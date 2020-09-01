@@ -14,7 +14,7 @@ do
   #echo "disk: $DISK, mount: $MOUNT_POINT, type: $TYPE, options: $OPTIONS"
 
   if [ "$1" == "-u" ]; then
-      echo "> Unmount and unlock /secret"
+      echo "> Unmount and unlock $MOUNT_POINT"
       if ( mount | grep $MOUNT_POINT >/dev/null ); then
           umount $MOUNT_POINT
       fi
