@@ -1,5 +1,9 @@
 # Clevis Mount Helper
 
+Clevis Mount Helper provides a means of automatically mounting luks encrypted clevis bound devices
+that does not rely on clevis-luks-askpass.path and fstab and crypttab support for \_netdev. This
+solution only supports automounting of non root volumes.
+
 ## Dependencies
 
 Install the `clevis` and `clevis-luks` packages.
