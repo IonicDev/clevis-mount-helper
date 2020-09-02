@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-input="/etc/clevis-helper/lukstab"
+input="/etc/clevis-helper/clevistab"
 
 while IFS= read -r line
 do
