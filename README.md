@@ -25,9 +25,9 @@ sudo cp ./clevis-mount-helper /etc/clevis-mount-helper/clevis-mount-helper`
 
 ## Configuration
 
-Clevis Mount Helper uses a configuration file `/etc/clevis-mount-helper/clevistab` to configure its mount
-operations. `clevistab` uses identical syntax to the `etc/fstab` file. On a single line in specify the
-following arguments in order (delimited by whitespace): Device,  Mount point, File system type and
-mount Options. The final 2 fstab arguments (dump and fsck) are ignored by the helper and can be
-omitted. Device must be device that has been luks protected and bound with a clevis pin (
-`clevis luks bind -d <device> <pin> '{}'`).
+Clevis Mount Helper uses a configuration file `/etc/clevis-mount-helper/clevistab` to configure its
+mount operations. `clevistab` uses identical syntax to the `etc/fstab` file. In `clevistab` on a
+single line for each luks device specify the following arguments in order (delimited by whitespace):
+Device,  Mount point, File system type and mount Options. The final 2 fstab arguments (dump and
+fsck) are ignored by the helper and can be comitted. Device must be device that has been luks
+protected and bound with a clevis pin (`clevis luks bind -d <device> <pin> '{}'`).
