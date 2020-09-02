@@ -10,4 +10,4 @@ RemainAfterExit=yes
 TimeoutSec=60
 
 [Install]
-WantedBy=NetworkManager-wait-online.service
+WantedBy=systemd-networkd-wait-online.service
