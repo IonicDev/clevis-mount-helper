@@ -4,12 +4,12 @@ input="/etc/clevis-mount-helper/clevistab"
 
 while IFS= read -r line
 do
-  line="$(echo $line | tr -s '[:blank:]')"
-  DISK="$(cut -d '[:blank:]' -f1 <<<"$line")"
-  MOUNT_POINT="$(cut -d '[:blank:]' -f2 <<<"$line")"
+  line="$(echo $line | tr -s '[:blank:]' ' ')"
+  DISK="$(cut -d ' ' -f1 <<<"$line")"
+  MOUNT_POINT="$(cut -d ' ' -f2 <<<"$line")"
   INTERMEDIARY="${MOUNT_POINT:1}"
-  TYPE="$(cut -d '[:blank:]' -f3 <<<"$line")"
-  OPTIONS="$(cut -d '[:blank:]' -f4 <<<"$line")"
+  TYPE="$(cut -d ' ' -f3 <<<"$line")"
+  OPTIONS="$(cut -d ' ' -f4 <<<"$line")"
 
   if [ "$1" == "-u" ]; then
       echo "> Unmount and unlock $MOUNT_POINT"
