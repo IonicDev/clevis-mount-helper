@@ -4,12 +4,12 @@ input="/etc/clevis-helper/clevistab"
 
 while IFS= read -r line
 do
-  line="$(echo $line | tr -s ' ')"
-  DISK="$(cut -d' ' -f1 <<<"$line")"
-  MOUNT_POINT="$(cut -d' ' -f2 <<<"$line")"
+  line="$(echo $line | tr -s '[:blank:]')"
+  DISK="$(cut -d '[:blank:]' -f1 <<<"$line")"
+  MOUNT_POINT="$(cut -d '[:blank:]' -f2 <<<"$line")"
   INTERMEDIARY="${MOUNT_POINT:1}"
-  TYPE="$(cut -d' ' -f3 <<<"$line")"
-  OPTIONS="$(cut -d ' ' -f4 <<<"$line")"
+  TYPE="$(cut -d '[:blank:]' -f3 <<<"$line")"
+  OPTIONS="$(cut -d '[:blank:]' -f4 <<<"$line")"
 
   #echo "disk: $DISK, mount: $MOUNT_POINT, type: $TYPE, options: $OPTIONS"
 
