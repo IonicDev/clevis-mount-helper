@@ -18,14 +18,14 @@ Copy `clevis-mount.service` to `/etc/systemd/system`.
 
 `sudo cp ./clevis-mount.service /etc/systemd/system/clevis-mount.service`
 
-Copy `clevis-mount-helper` to `/etc/clevis-helper`.
+Copy `clevis-mount-helper` to `/etc/clevis-mount-helper`.
 
-`sudo mkdir /etc/clevis-helper
-sudo cp ./clevis-mount-helper /etc/clevis-helper/clevis-mount-helper`
+`sudo mkdir /etc/clevis-mount-helper
+sudo cp ./clevis-mount-helper /etc/clevis-mount-helper/clevis-mount-helper`
 
 ## Configuration
 
-Clevis Mount Helper uses a configuration file `/etc/clevis-helper/clevistab` to configure its mount
+Clevis Mount Helper uses a configuration file `/etc/clevis-mount-helper/clevistab` to configure its mount
 operations. `clevistab` uses identical syntax to the `etc/fstab` file. On a single line in specify the
 following arguments in order (delimited by whitespace): Device,  Mount point, File system type and
 mount Options. The final 2 fstab arguments (dump and fsck) are ignored by the helper and can be

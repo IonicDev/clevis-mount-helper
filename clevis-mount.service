@@ -4,8 +4,8 @@ After=remote-fs.target
 
 [Service]
 Type=oneshot
-ExecStart=/etc/clevis-mount/clevis-mount-helper
-ExecStop=/etc/clevis-mount/clevis-mount-helper -u
+ExecStart=/etc/clevis-mount-helper/clevis-mount-helper
+ExecStop=/etc/clevis-mount-helper/clevis-mount-helper -u
 RemainAfterExit=yes
 TimeoutSec=60
 

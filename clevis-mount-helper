@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-input="/etc/clevis-helper/clevistab"
+input="/etc/clevis-mount-helper/clevistab"
 
 while IFS= read -r line
 do
