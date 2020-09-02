@@ -4,7 +4,7 @@ input="/etc/clevis-mount-helper/clevistab"
 
 while IFS= read -r line
 do
-  line="$(echo $line | tr -s '[:blank:]' ' ')"
+  line="$(echo $line)"
   DISK="$(cut -d ' ' -f1 <<<"$line")"
   MOUNT_POINT="$(cut -d ' ' -f2 <<<"$line")"
   INTERMEDIARY="${MOUNT_POINT:1}"
