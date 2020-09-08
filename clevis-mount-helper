@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+input="/etc/clevis-mount-helper/clevistab"
+
+while IFS= read -r line
+do
+  line="$(echo $line)"
+  DISK="$(cut -d ' ' -f1 <<<"$line")"
+  MOUNT_POINT="$(cut -d ' ' -f2 <<<"$line")"
+  INTERMEDIARY="${MOUNT_POINT:1}"
+  TYPE="$(cut -d ' ' -f3 <<<"$line")"
+  OPTIONS="$(cut -d ' ' -f4 <<<"$line")"
+
+  if [ "$1" == "-u" ]; then
+      echo "> Unmount and unlock $MOUNT_POINT"
+      if ( mount | grep $MOUNT_POINT >/dev/null ); then
+          umount $MOUNT_POINT
+      fi
+      if [ -L "/dev/mapper/$INTERMEDIARY" ]; then
+          cryptsetup close /dev/mapper/$INTERMEDIARY
+      fi
+  else
+      echo "> Unlock and mount $MOUNT_POINT"
+      if [ ! -L "/dev/mapper/$INTERMEDIARY" ]; then
+          clevis luks unlock -d $DISK -n $INTERMEDIARY
+      fi
+      # Mount if not already mounted
+      if ! ( mount | grep $MOUNT_POINT >/dev/null ); then
+          mount -t $TYPE -o $OPTIONS /dev/mapper/$INTERMEDIARY $MOUNT_POINT
+      fi
+  fi
+
+done < "$input"

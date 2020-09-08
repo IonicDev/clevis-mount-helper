@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount clevis-bound managed directory
+After=remote-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/clevis-mount-helper/clevis-mount-helper
+ExecStop=/etc/clevis-mount-helper/clevis-mount-helper -u
+RemainAfterExit=yes
+TimeoutSec=60
+
+[Install]
+WantedBy=systemd-networkd-wait-online.service
